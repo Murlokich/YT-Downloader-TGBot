@@ -1,0 +1,5 @@
+ffmpeg-python
+requests
+validators
+yt-dlp
+python-telegram-bot
