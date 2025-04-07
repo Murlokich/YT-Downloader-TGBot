@@ -12,6 +12,8 @@ from telegram.ext import filters, MessageHandler, ApplicationBuilder, ContextTyp
 TOKEN: Final[str] = os.getenv("TOKEN")
 USERNAME: Final[str] = os.getenv("USERNAME")
 
+DOWNLOADS_DIR_NAME: Final[str] = "downloads"
+
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -207,5 +209,8 @@ if __name__ == '__main__':
     application.add_handler(start_handler)
     application.add_handler(url_video_handler)
     application.add_handler(non_text_handler)
+
+    if not os.path.exists(DOWNLOADS_DIR_NAME):
+        os.makedirs(DOWNLOADS_DIR_NAME)
 
     application.run_polling()
